@@ -7,6 +7,21 @@
 </head>
 <body>
     <h1> Variables</h1>
-    
+    <h2>Object</h2>
+    <?php
+    class Student {
+        public $name;
+        public $age;
+
+        public function __construct ($name, $age){
+            $this -> name = $name;
+            $this -> age = $age;
+
+
+        }
+    }
+    $obj = new Student ("Sharmin", 24);
+    var_dump($obj);
+    ?>
 </body>
 </html>
