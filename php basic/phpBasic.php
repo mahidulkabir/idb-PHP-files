@@ -22,6 +22,7 @@
     }
     $obj = new Student ("Sharmin", 24);
     var_dump($obj);
+    
     ?>
 </body>
 </html>
