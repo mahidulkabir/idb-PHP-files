@@ -54,10 +54,22 @@ class LoginForm{
     
 }
 if(isset($_POST["btn_reg_submit"])){
+
   $userName = $_POST["username"];
   $password = $_POST["password"];
-  $newUser = new LoginForm($userName,$password);
-  $newUser->saveData();
+  if(preg_match("/(?=(?:.*\d))(?=(?:.*[A-Z]))(?=(?:.*[a-z]))([a-zA-Z\d]){8,}$/",$password)){
+    echo "<script>
+      alert('Registration Successful');
+      window.stop();
+      </script>";
+    $newUser = new LoginForm($userName,$password);
+    $newUser->saveData();
+  }else{
+    echo "<script>
+      alert('Password must be at least 8 charecter and Contain atleast one Capital, one small and one digit.');
+      window.stop();
+      </script>";
+  }
 }
 ?>
 </body>
