@@ -35,16 +35,18 @@
 class LoginForm{
     private $userName;
     private $password;
+    private $hashedPass;
     private static $file_Path_for_userName_password = "reg_userName_Pass.txt";
 
     function __construct($_userName,$_password)
     {
         $this->userName = $_userName;
         $this->password = $_password;
+        $this->hashedPass = password_hash($_password,PASSWORD_DEFAULT);
 
     }
     public function csv(){
-        return $this->userName.",".$this->password.PHP_EOL;
+        return $this->userName.",".$this->hashedPass.PHP_EOL;
     }
     public function saveData(){
       file_put_contents("reg_userName_Pass.txt",$this->csv(),FILE_APPEND);

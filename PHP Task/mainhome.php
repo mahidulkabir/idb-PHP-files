@@ -39,11 +39,12 @@ if(!isset($_SESSION["session1"])){
     <div class="toggle w-full text-end hidden md:flex md:w-auto px-2 py-2 md:rounded">
         <a href="tel:+123">
             <div class="flex justify-end">
-                <div class="flex items-center h-10 w-30 rounded-md bg-[#c8a876] text-white font-medium p-2">
-                    <!-- Heroicon name: phone -->
-                    <a href="./logout.php">Log Out</a>
+                <a href="./logout.php">
+                <button class="flex items-center  rounded-md bg-[#c8a876] text-white font-medium px-4 py-2 ">
+                    Log Out
                     
-                </div>
+                </button>
+                </a>
             </div>
         </a>
     </div>

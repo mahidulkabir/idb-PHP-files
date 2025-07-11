@@ -40,11 +40,11 @@ if(isset($_POST["login_submit"])){
   $file_read = file("reg_userName_Pass.txt");
   foreach($file_read as $line){
     list($givenUsername,$givenPassword)=explode(",",$line);
-    if(trim($givenUsername)==$username && trim($givenPassword)==$password){
+    if(trim($givenUsername)==$username && password_verify($password,trim($givenPassword))){
       $_SESSION["session1"]=$username;
       header("location:./mainhome.php");
     }else{
-      // $msg="user name or password is incorrect";
+      
       echo "<script>
       alert('Username or Password is incorect');
       window.stop();
