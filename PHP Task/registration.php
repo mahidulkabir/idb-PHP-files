@@ -7,69 +7,136 @@
     <title>LogIn :: Landing Page</title>
 </head>
 <body>
-    <div class="flex h-screen bg-indigo-200">
-<div class="w-full max-w-xs m-auto bg-indigo-100 rounded p-5">   
-      <header>
-        <img class="w-20 mx-auto mb-5" src="https://img.icons8.com/fluent/344/year-of-tiger.png" />
-      </header>     
-      <form method="POST">
-        <div>
-          <label class="block mb-2 text-indigo-500" for="username">Create Username</label>
-          <input class="w-full p-2 mb-6 text-indigo-700 border-b-2 border-indigo-500 outline-none focus:bg-gray-300" type="text" name="username" >
+    <div class="bg-gray-100 flex h-screen items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div class="w-full max-w-md space-y-8">
+        <div class="bg-white shadow-md rounded-md p-6">
+
+            <img class="mx-auto h-12 w-auto" src="https://www.svgrepo.com/show/499664/user-happy.svg" alt="" />
+
+            <h2 class="my-3 text-center text-3xl font-bold tracking-tight text-gray-900">
+                Sign up for an account
+            </h2>
+
+
+            <form class="space-y-6" method="POST">
+                <!-- Full Name  -->
+                <div>
+                    <label for="new-password" class="block text-sm font-medium text-gray-700">Full Name</label>
+                    <div class="mt-1">
+                        <input name="full_name" type="name" required
+                            class="px-2 py-3 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm" placeholder="Type Here" />
+                    </div>
+                </div>
+                
+                <!-- Email Address  -->
+                <div>
+                    <label for="new-password" class="block text-sm font-medium text-gray-700">Email Address</label>
+                    <div class="mt-1">
+                        <input name="email_address" type="email" required
+                            class="px-2 py-3 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm" placeholder="Type Here" />
+                    </div>
+                </div>
+                <!-- user name  -->
+                <div>
+                    <label for="new-password" class="block text-sm font-medium text-gray-700">Username</label>
+                    <div class="mt-1">
+                        <input name="username" type="name" required
+                            class="px-2 py-3 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm" placeholder="Type Here" />
+                    </div>
+                </div>
+                        <!-- password  -->
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <div class="mt-1">
+                        <input name="password" type="password" autocomplete="password" required
+                            class="px-2 py-3 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm" placeholder="Type Here" />
+                    </div>
+                </div>
+                <!-- confirm password  -->
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                    <div class="mt-1">
+                        <input name="confirm_password" type="password" autocomplete="password" required
+                            class="px-2 py-3 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm" placeholder="Retype Password" />
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <button type="submit"
+                        class="flex w-full justify-center rounded-md border border-transparent bg-sky-400 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2" name="btn_reg_submit">Register Account
+                        </button>
+                    <a href="./index.php" class="flex w-full justify-center rounded-md border border-transparent bg-sky-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2" >
+                        Go Back To Login Page
+                        </a>
+                </div>
+            </form>
         </div>
-        <div>
-          <label class="block mb-2 text-indigo-500" for="password">Create Password</label>
-          <input class="w-full p-2 mb-6 text-indigo-700 border-b-2 border-indigo-500 outline-none focus:bg-gray-300" type="password" name="password" >
-        </div>
-        <div>          
-          <input class="w-full bg-indigo-700 hover:bg-pink-700 text-white font-bold py-2 px-4 mb-6 rounded" type="submit" value="Register" name="btn_reg_submit">
-        </div>       
-      </form>  
-      <footer class="text-center">
-        
-        <a class="text-indigo-700 hover:text-pink-700 text-sm  " href="./index.php">Go to Login Page </a>
-      </footer>   
     </div>
 </div>
 <?php
 class LoginForm{
+     private $fullName;
+    private $email;
     private $userName;
     private $password;
+    private $confirm_password;
     private $hashedPass;
     private static $file_Path_for_userName_password = "reg_userName_Pass.txt";
 
-    function __construct($_userName,$_password)
+    function __construct($_fullName,$_email,$_userName,$_password,$_confirm_password,)
     {
+      $this->fullName = $_fullName; 
+      $this->email = $_email;
         $this->userName = $_userName;
         $this->password = $_password;
         $this->hashedPass = password_hash($_password,PASSWORD_DEFAULT);
+        $this->confirm_password = $_confirm_password;
+
 
     }
     public function csv(){
         return $this->userName.",".$this->hashedPass.PHP_EOL;
     }
-    public function saveData(){
+    public function csv2(){
+        return $this->fullName.",".$this->email.",".$this->userName.PHP_EOL;
+    }
+    public function saveIdPass(){
       file_put_contents("reg_userName_Pass.txt",$this->csv(),FILE_APPEND);
     }
     
+    public function saveUserInfo(){
+      file_put_contents("reg_user_data.txt", $this->csv2(),FILE_APPEND);
+    }
 }
 if(isset($_POST["btn_reg_submit"])){
 
   $userName = $_POST["username"];
+  $fullName = $_POST["full_name"];
+  $email = $_POST["email_address"];
   $password = $_POST["password"];
-  if(preg_match("/(?=(?:.*\d))(?=(?:.*[A-Z]))(?=(?:.*[a-z]))([a-zA-Z\d]){8,}$/",$password)){
+  $confirm_password = $_POST["confirm_password"];
+  
+  if($password !=$confirm_password){
     echo "<script>
+      alert('retype password dosent match');
+      window.stop();
+      </script>";
+    }elseif(preg_match("/(?=(?:.*\d))(?=(?:.*[A-Z]))(?=(?:.*[a-z]))([a-zA-Z\d]){8,}$/",$password)){
+    $newUser = new LoginForm($fullName,$email,$userName,$password,$confirm_password); 
+    $newUser->saveIdPass();
+    $newUser->saveUserInfo();
+      echo "<script>
       alert('Registration Successful');
       window.stop();
       </script>";
-    $newUser = new LoginForm($userName,$password);
-    $newUser->saveData();
-  }else{
-    echo "<script>
+    }
+  else{
+    
+     echo "<script>
       alert('Password must be at least 8 charecter and Contain atleast one Capital, one small and one digit.');
       window.stop();
-      </script>";
-  }
+      </script>";}
+  
 }
 ?>
 </body>
