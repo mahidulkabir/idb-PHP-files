@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="bg-gray-100 flex h-screen items-center justify-center px-4 sm:px-6 lg:px-8">
-    <div class="w-full max-w-md space-y-8">
+    <div class="w-full max-w-md space-y-5">
         <div class="bg-white shadow-md rounded-md p-6">
 
             <img class="mx-auto h-12 w-auto" src="https://www.svgrepo.com/show/499664/user-happy.svg" alt="" />
