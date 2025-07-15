@@ -123,11 +123,11 @@
         {
             file_put_contents("reg_user_data.txt", $this->csv2(), FILE_APPEND);
         }
-        public function profile_pic()
-        {
-            $img = "image/";
-            move_uploaded_file("$this->temp_file", "$img.$this->filename");
-        }
+        // public function profile_pic()
+        // {
+        //     $img = "image/";
+        //     move_uploaded_file("$this->temp_file", "$img.$this->filename");
+        // }
     }
     if (isset($_POST["btn_reg_submit"])) {
 
@@ -155,7 +155,8 @@
             $newUser = new LoginForm($fullName, $email, $userName, $password, $confirm_password, $filename, $temp_file);
             $newUser->saveIdPass();
             $newUser->saveUserInfo();
-            $newUser->profile_pic();
+            $img = "image/";
+            move_uploaded_file("$this->temp_file", "$img.$this->filename");
             echo "<script>
       alert('Registration Successful');
       window.stop();

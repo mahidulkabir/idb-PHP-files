@@ -9,7 +9,9 @@ if(!isset($_SESSION["session1"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+      <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
 
     <title>Main Landing Page</title>
 </head>
@@ -24,6 +26,13 @@ if(!isset($_SESSION["session1"])){
         <div class="sm:w-[80%] w-[90%] mx-auto flex">
             <img src="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw3fHxwZW9wbGV8ZW58MHwwfHx8MTcxMTExMTM4N3ww&ixlib=rb-4.0.3&q=80&w=1080" alt="User Profile"
                     class="rounded-md lg:w-[12rem] lg:h-[12rem] md:w-[10rem] md:h-[10rem] sm:w-[8rem] sm:h-[8rem] w-[7rem] h-[7rem] outline outline-2 outline-offset-2 outline-blue-500 relative lg:bottom-[5rem] sm:bottom-[4rem] bottom-[3rem]" />
+                    <?php 
+
+if(isset($_FILES['img'])){
+  echo "<image src='$img/$file_name' width='300px'>";
+}
+
+?>
 
             <!-- FullName -->
             <h1
@@ -90,6 +99,7 @@ if(!isset($_SESSION["session1"])){
 
             
 
+            <a href="logout.php"><button class="btn btn-primary">Logout</button></a>
         </div>
     </div>
 </section>
