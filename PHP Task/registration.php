@@ -48,7 +48,7 @@
                     </div>
                     <!-- user profile  -->
                     <div>
-                        <label for="new-password" class="block text-sm font-medium text-gray-700">Profile Photo</label>
+                        <label for="profile_pic" class="block text-sm font-medium text-gray-700">Profile Photo</label>
                         <div class="mt-1">
                             <input name="profile_pic" type="file" required
                                 class="px-2 py-3 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm" placeholder="Type Here" />
@@ -92,11 +92,10 @@
         private $password;
         private $confirm_password;
         private $hashedPass;
-        private $filename;
-        private $temp_file;
+        
         private static $file_Path_for_userName_password = "reg_userName_Pass.txt";
 
-        function __construct($_fullName, $_email, $_userName, $_password, $_confirm_password, $_filename, $_temp_file)
+        function __construct($_fullName, $_email, $_userName, $_password, $_confirm_password)
         {
             $this->fullName = $_fullName;
             $this->email = $_email;
@@ -104,7 +103,6 @@
             $this->password = $_password;
             $this->hashedPass = password_hash($_password, PASSWORD_DEFAULT);
             $this->confirm_password = $_confirm_password;
-            $this->filename = $_filename;
         }
         public function csv()
         {
@@ -137,15 +135,23 @@
         $password = $_POST["password"];
         $confirm_password = $_POST["confirm_password"];
         $filename = $_FILES['profile_pic']['name'];
-        $temp_file = $_FILES['profile_pic']['tmp_name'];
+        $temp_path = $_FILES['profile_pic']['tmp_name'];
+        $file_size = $_FILES['profile_pic']['size'];
+        $file_type = $_FILES['profile_pic']['type'];
+        $file_size_to_kb = $file_size/1024;
+        $new_path = "image/";
+        // 
+        $file_type_validator = ["image/png","image/jpg","image/jpeg"];
 
-
-
-
-
-
-
-
+        if(!in_array($file_type,$file_type_validator)){
+            echo "file type not match";
+        };
+        if($file_size_to_kb<500){
+            move_uploaded_file($temp_path,$new_path.$filename);
+        };
+        // file upload part 
+        
+        // file Upload part stop
         if ($password != $confirm_password) {
             echo "<script>
       alert('retype password dosent match');
@@ -169,6 +175,25 @@
       </script>";
         }
     }
+     if(isset($_POST['btn_reg_submit'])){
+        $filename = $_FILES['profile_pic']['name'];
+        $temp_path = $_FILES['profile_pic']['tmp_name'];
+        $file_size = $_FILES['profile_pic']['size'];
+        $file_type = $_FILES['profile_pic']['type'];
+        $file_size_to_kb = $file_size/1024;
+        $new_path = "image/";
+        // 
+        $file_type_validator = ["image/png","image/jpg","image/jpeg"];
+
+        if(!in_array($file_type,$file_type_validator)){
+            echo "file type not match";
+        };
+        if($file_size_to_kb<500){
+            move_uploaded_file($temp_path,$new_path.$filename);
+        };
+        // echo $file_type;
+    }
+    ?>
     ?>
 </body>
 
