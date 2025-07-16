@@ -42,7 +42,7 @@ if(isset($_POST["login_submit"])){
     list($givenUsername,$givenPassword)=explode(",",$line);
     if(trim($givenUsername)==$username && password_verify($password,trim($givenPassword))){
       $_SESSION["session1"]=$username;
-      header("location:./mainhome.php");
+      header("location:./front.php");
     }else{
       
       echo "<script>

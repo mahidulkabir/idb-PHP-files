@@ -1,13 +1,1 @@
-Mahidul Kabir,mahidulkabir8@gmail.com,mahidul
-Mahidul Kabir,mahidulkabir8@gmail.com,mahidul123
-Mahidul Kabir,mahidulkabir8@gmail.com,mahidul123
-Mahidul Kabir,hares@gmail.com,mahidul123
-Hares Islam,hares@gmail.com,suman
-Mahidul Kabir,osman122@gmail.com,mkbir190@outlook.com
-Mahidul Kabir,hares@gmail.com,mahidul
-Mahidul Kabir,osman122@gmail.com,suman
-Hares Islam,osman122@gmail.com,mahidul
-Hares Islam,hares@gmail.com,mahidul
-Mahidul Kabir,mahidulkobir@gmail.com,kabir
-Mahidul Kabir,mahidulkobir@gmail.com,kabir
-Mahidul Kabir,osman122@gmail.com,kabir
+Hares Islam,mahidulkabir8@gmail.com,mahidul
