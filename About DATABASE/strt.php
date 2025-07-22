@@ -9,22 +9,8 @@
 </head>
 <body>
     <?php
-    
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "user";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-echo "Connected successfully";
-
+    require_once("./require_files/connectDB.php");
 $sql = "SELECT id,username,age FROM user";
 $result = mysqli_query($conn, $sql);
 echo "<div class='overflow-x-auto rounded-box border border-base-content/5 bg-base-200'>
@@ -51,6 +37,9 @@ echo "<div class='overflow-x-auto rounded-box border border-base-content/5 bg-ba
    
 echo"</div>";
 ?>
+<button class="btn btn-primary btn-sm">
+<a href="./data_entry.php"> Go to data entry</a>
+   </button> 
    
 </body>
 </html>
