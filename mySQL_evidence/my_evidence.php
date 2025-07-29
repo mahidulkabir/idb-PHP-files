@@ -48,8 +48,9 @@ if(isset($_POST["delmanufact"])){
 <form action="<?php $_SERVER['PHP_SELF']?>" method="POST" >
 Name of the Manufacturer: <br>
 <input type="text" name="manufec_name" > <br> <br>
-
-Address of the Manufacturer: <br>
+ 
+     
+    Address of the Manufacturer: <br>
 <input type="text" name="manufec_add" > <br> <br>
 Contact No. of the Manufacturer: <br>
 <input type="text" name="manufec_contact" > <br> <br>
@@ -120,6 +121,33 @@ while(list($m_id,$m_name) = $manufec_id->fetch_row() ){
     </tr>
     <?php
     $show_all = $conn->query("SELECT * FROM all_table_info");
+    while(list ($_manuf_name,$_manuf_add,$_manufac_cont,$_prod_name,$_prod_price)= $show_all->fetch_row()){ 
+    echo "<tr> 
+        <td> $_manuf_name</td>
+        <td> $_manuf_add</td>
+        <td> $_manufac_cont</td>
+        <td> $_prod_name</td>
+        <td> $_prod_price</td>
+    
+    </tr>";
+    
+    };
+    ?>
+</table>
+<!-- viewing prodouct in the table   -->
+ 
+<h3>View Product More than 5000 </h3>
+<table border="1" style="border-collapse:collapse;">
+    <tr>
+        <td>Manufacturer Name</td>
+        <td>Manufacturer Address</td>
+        <td>Manufacturer Contact</td>
+        <td>Product Name</td>
+        <td>Product Price</td>
+    
+    </tr>
+    <?php
+    $show_all = $conn->query("SELECT * FROM more_than_five");
     while(list ($_manuf_name,$_manuf_add,$_manufac_cont,$_prod_name,$_prod_price)= $show_all->fetch_row()){ 
     echo "<tr> 
         <td> $_manuf_name</td>
